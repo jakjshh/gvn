@@ -41,7 +41,7 @@ const routes = [
     component: Cosplay
   },
   {
-    path: '/ideas',
+    path: '/Ideas',
     name: 'Ideas',
     component: Ideas
   },
