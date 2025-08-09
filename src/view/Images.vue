@@ -13,9 +13,10 @@
         <img :src="previewImg.src" class="preview-img" :alt="previewImg.title || '同人图'" />
         <div class="preview-info">
           <h2 v-if="previewImg.title">{{ previewImg.title }}</h2>
-          <p v-if="previewImg.author">by {{ previewImg.author }}</p>
+          <!-- <p v-if="previewImg.author">by {{ previewImg.author }}</p> -->
           <p v-if="previewImg.desc">{{ previewImg.desc }}</p>
         </div>
+        <div class="preview-author">by:{{ previewImg.author }}</div>
         <button class="close-btn" @click="closePreview">×</button>
       </div>
     </div>
@@ -28,39 +29,44 @@ export default {
     // 自动生成所有图片列表
     // 只展示真实存在的图片
     const imgFiles = [
-      'uenoyama_AN_b.jpg',
-      'yuki_AN_a.jpg',
-      'uenoyama_CS_a.jpg',
-      'uenoyama_AN_a.jpg',
-      'shizuhiiragi_YX_b.jpg',
-      'shizuhiiragi_YX_a.jpg',
-      'shizuhiiragi_LS_a.jpg',
-      'natsufuyu_ZY_a.jpg',
-      'natsufuyu_N_a.jpg',
-      'natsufuyu_LGQ_a.jpg',
-      'mafuyu_YZ_b.jpg',
-      'mafuyu_YZ_a.jpg',
-      'mafuyu_CS_b.jpg',
-      'mafuyu_CS_a.jpg',
-      'mafuyu_AN_a.jpg',
-      'hiiragi_YX_b.jpg',
-      'hiiragi_YX_a.png',
-      'haruki_N_a.jpg',
-      'given_N_b.jpg',
-      'given_N_a.png',
-      'akiharu_CS_a.jpg',
-      'akiharu_CS_b.jpg',
-      'akiharu_CS_c.jpg',  
-      'all_N_a.jpg',  
+      'uenoyama_阿柠_b.jpg',
+      'yuki_阿柠_a.jpg',
+      'uenoyama_陈时_a.jpg',
+      'uenoyama_阿柠_a.jpg',
+      'shizuhiiragi_於邪_b.jpg',
+      'shizuhiiragi_於邪_a.jpg',
+      'shizuhiiragi_林深_a.jpg',
+      'natsufuyu_朝云_a.jpg',
+      'natsufuyu_南_a.jpg',
+      'natsufuyu_两个秋_a.jpg',
+      'mafuyu_叶子_b.jpg',
+      'mafuyu_叶子_a.jpg',
+      'mafuyu_陈时_b.jpg',
+      'mafuyu_陈时_a.jpg',
+      'mafuyu_阿柠_a.jpg',
+      'hiiragi_於邪_b.jpg',
+      'hiiragi_於邪_a.png',
+      'haruki_南_a.jpg',
+      'given_南_b.jpg',
+      'given_南_a.png',
+      'akiharu_陈时_a.jpg',
+      'akiharu_陈时_b.jpg',
+      'akiharu_陈时_c.jpg',  
+      'all_南_a.jpg',  
       // ...如需补充请将 public/images 下的文件名全部列出
     ];
-    const images = imgFiles.map((file, i) => ({
-      src: `/images/${file}`,
-      title: '',
-      author: '',
-      desc: '',
-      style: {},
-    }));
+const images = imgFiles.map((file, i) => {
+  const match = file.match(/_([^_]+)_/);
+  const author = match ? match[1] : '';
+  return {
+    src: `/images/${file}`,
+    title: '',
+    author,
+    desc: '',
+    style: {},
+    filename: file,
+  };
+});
     return {
       images,
       showPreview: false,
@@ -96,20 +102,21 @@ export default {
   transform: scale(1.1);
 }
 .images-masonry {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
-  gap: 1.2rem;
-  padding: 1.5rem;
-  align-items: start;
+  column-count: 4;
+  column-gap: 1.2rem;
+  margin-top: 1rem;
 }
 .masonry-item {
-  overflow: hidden;
-  border-radius: 1.2rem;
+    break-inside: avoid;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  display: block;
+   overflow: hidden;
+  border-radius: 1rem;
   box-shadow: 0 4px 16px rgba(160, 155, 254, 0.12);
   transition: transform 0.2s, box-shadow 0.2s;
   background: #fff;
-  display: block;
+
 }
 .masonry-item:hover {
   transform: translateY(-6px) scale(1.03);
@@ -126,6 +133,14 @@ export default {
 }
 .masonry-img:hover {
   filter: brightness(1.08) saturate(1.2);
+}
+
+.preview-author {
+  font-size: 0.95rem;
+  color: #636e72;
+  margin-top: 0.5rem;
+  text-align: center;
+  opacity: 0.8;
 }
 .preview-modal {
   position: fixed;

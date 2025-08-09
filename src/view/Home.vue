@@ -6,14 +6,14 @@
     </div>
     <div class="home-content">
       <h1 class="home-title">ギヴン</h1>
-      <p class="home-desc">合集</p>
+      <p class="home-desc">应该是一个仅群内的总结合集</p>
       <div class="modules-grid">
         <router-link class="module-card" to="/original">原作相关</router-link>
         <router-link class="module-card" to="/images">同人图/文</router-link>
         <!-- <router-link class="module-card" to="/articles">同人文</router-link> -->
         <router-link class="module-card" to="/peripheral">周边、谷美</router-link>
         <router-link class="module-card" to="/cosplay">Cosplay</router-link>
-        <router-link class="module-card" to="/Ideas">音乐外链</router-link>
+        <router-link class="module-card" to="/Ideas">口嗨</router-link>
         <router-link class="module-card" to="/about">关于</router-link>
       </div>
     </div>
