@@ -1,0 +1,20 @@
+{
+  "name": "gvn",
+  "version": "1.0.0",
+  "description": "works",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
+    "vue-template-compiler": "^2.7.16"
+  },
+  "dependencies": {
+    "vue": "^3.5.18"
+  }
+}
