@@ -54,6 +54,13 @@ export default {
   data() {
     return {
       artworks: [
+                {
+          id: 4,
+          title: '全员',
+          author: 'All',
+          img: require('@/../public/original/all_a.jpg'),
+          desc: '刺伤yyds。',
+        },
         {
           id: 1,
           title: '常看常美的一张图',
@@ -75,13 +82,7 @@ export default {
           img: require('@/../public/original/uenoyama_a.jpg'),
           desc: 'from 屑黄堡',
         },
-        {
-          id: 4,
-          title: '全员',
-          author: 'All',
-          img: require('@/../public/original/all_a.jpg'),
-          desc: '刺伤yyds。',
-        },
+
         {
           id: 5,
           title: '萌萌春樹',
@@ -210,16 +211,24 @@ export default {
   background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
   min-height: 100vh;
 }
+/* 主页图标 */
 .home-icon {
   display: inline-block;
   margin: 2rem 0 0 2rem;
   cursor: pointer;
   transition: transform 0.2s;
   z-index: 10;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .home-icon:hover {
   transform: scale(1.1);
+  background: rgba(255, 255, 255, 1);
 }
+
 .banner {
   background: linear-gradient(90deg, #81ecec 0%, #a29bfe 100%);
   padding: 2rem 0 1rem 0;

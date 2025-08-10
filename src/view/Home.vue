@@ -4,6 +4,10 @@
       <div class="note" v-for="n in 12" :key="n" :style="{left: (n*8+10)+'vw', animationDelay: (n*0.3)+'s'}">🎵</div>
       <div class="guitar"></div>
     </div>
+    <router-link to="/moe" class="corner-icon">
+      <img src="/home/inu_a.jpg" alt="Icon" class="corner-image">
+      <span class="corner-text">(,,´•ω•)ノ</span>
+    </router-link>
     <div class="home-content">
       <h1 class="home-title">ギヴン</h1>
       <p class="home-desc">应该是一个仅群内的总结合集</p>
@@ -121,4 +125,33 @@ export default {
       color: #fd79a8;
       background: linear-gradient(120deg, #81ecec 0%, #a29bfe 100%);
     }
+    /* 新增的左上角图标样式 */
+.corner-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+.corner-icon:hover {
+  transform: scale(1.1);
+}
+.corner-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #a29bfe;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.corner-text {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #636e72;
+  font-weight: 500;
+}
     </style>

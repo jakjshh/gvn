@@ -8,12 +8,19 @@ import Peripheral from '../view/Peripheral.vue'
 import Cosplay from '../view/Cosplay.vue'
 import Ideas from '../view/Ideas.vue'
 import About from '../view/About.vue'
+import moe from '../view/moe.vue'
+
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+   {
+    path: '/moe',
+    name: 'moe',
+    component: moe
   },
   {
     path: '/original',

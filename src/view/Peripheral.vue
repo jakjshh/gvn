@@ -10,12 +10,14 @@
     </div>
     <div v-if="showPreview" class="preview-modal" @click.self="closePreview">
       <div class="preview-content">
-        <img :src="previewImg.src" class="preview-img" :alt="previewImg.title || '周边图'" />
+        <div class="preview-img-wrap">
+          <img :src="previewImg.src" class="preview-img" :alt="previewImg.title || '周边图'" />
+          <div class="preview-author">by:{{ previewImg.author }}</div>
+        </div>
         <div class="preview-info">
           <h2 v-if="previewImg.title">{{ previewImg.title }}</h2>
           <p v-if="previewImg.desc">{{ previewImg.desc }}</p>
         </div>
-        <div class="preview-author">by:{{ previewImg.author }}</div>
         <button class="close-btn" @click="closePreview">×</button>
       </div>
     </div>
@@ -45,6 +47,8 @@ export default {
       'ugetsu_麦琪_a.jpg',
       'uenoyama_朝云_a.jpg',
       'natsufuyu_朝云_a.jpg',
+      'all_林深_a.jpg',
+      'guitarbass_林深_a.jpg',
       // ...如需补充请将 public/goods 下的文件名全部列出
     ];
     const images = imgFiles.map((file, i) => {
@@ -84,20 +88,30 @@ export default {
   background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
   min-height: 100vh;
 }
+/* 主页图标 */
 .home-icon {
   display: inline-block;
   margin: 2rem 0 0 2rem;
   cursor: pointer;
   transition: transform 0.2s;
   z-index: 10;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .home-icon:hover {
   transform: scale(1.1);
+  background: rgba(255, 255, 255, 1);
 }
+
 .images-masonry {
-    column-count: 4;
+    column-count: 3;
   column-gap: 1.2rem;
    margin-top: 1rem;
+     padding: 5rem 1.5rem 1.5rem;
+
   /* display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: auto;
@@ -133,6 +147,12 @@ export default {
 .masonry-img:hover {
   filter: brightness(1.08) saturate(1.2);
 }
+/* 弹窗作者居中显示在图片下方 */
+.preview-img-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .preview-author {
   font-size: 0.95rem;
   color: #636e72;
@@ -158,17 +178,17 @@ export default {
   box-shadow: 0 8px 32px rgba(160, 155, 254, 0.22);
   padding: 2rem;
   position: relative;
-  max-width: 90vw;
+  max-width: 60vw !important;
   max-height: 90vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 .preview-img {
   max-width: 50vw;
   max-height: 60vh;
   border-radius: 1rem;
-  margin-right: 1rem;
+  margin-right: 0;
   box-shadow: 0 2px 12px rgba(160, 155, 254, 0.18);
 }
 .preview-info {
